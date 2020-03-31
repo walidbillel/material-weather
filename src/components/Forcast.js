@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Paper, Grid, TextField, MenuItem, Button, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-
+import useStyles from './styles'
 console.log(process.env.REACT_APP_API_KEY);
+
+
+
+
 
 const weatherDegrees = [
   {
@@ -15,21 +18,7 @@ const weatherDegrees = [
   }
 ];
 
-const useStyles = makeStyles(theme => ({
- forcastPaper: {
-    flexGrow: 1,
-    padding: theme.spacing(5),
-    margin: theme.spacing(6)
-  },
-  select: {
-    width: "100%",
-    marginBottom: theme.spacing(3)
-  },
-  submitBtn: {
-    alignItems: "center",
-    width: "100%"
-  }
-}));
+
 
 const Forcast = () => {
   const classes = useStyles();

@@ -1,20 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Paper, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import useStyles from './styles'
 
-const useStyles = makeStyles(theme => ({
-  rootLocation: {
-    flexGrow: 1,
-    margin: theme.spacing(6)
-  },
-  currentWeather: {
-    padding: theme.spacing(2),
-    marginTop: theme.spacing(4),
-    background: "darkorange",
-    color: "white",
-    textAlign: "center"
-  }
-}));
 
 const CurrentWeather = () => {
   const classes = useStyles();
