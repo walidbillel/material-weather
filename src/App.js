@@ -1,26 +1,24 @@
-import React from 'react';
-import Forcast from './components/Forcast';
-import CurrentLocation from './components/CurrentLocation'
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import Forcast from "./components/Forcast";
+import CurrentLocation from "./components/CurrentLocation";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
-    
+    flexGrow: 1
   },
   toolBar: {
-    background: 'darkblue'
+    background: "darkblue"
   },
   title: {
     flexGrow: 1,
-    textAlign: 'center',
+    textAlign: "center",
     letterSpacing: theme.spacing(0.4),
-    fontWeight: 'bold'
-
-  },
+    fontWeight: "bold"
+  }
 }));
 
 function App() {
@@ -34,8 +32,8 @@ function App() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <CurrentLocation/>
-    <Forcast/>
+      <CurrentLocation />
+      <Forcast />
     </div>
   );
 }

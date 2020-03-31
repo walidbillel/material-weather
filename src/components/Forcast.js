@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Paper, Grid, TextField, MenuItem, Button, Typography } from "@material-ui/core";
-import useStyles from './styles'
+import useStyles from './styles';
+
 console.log(process.env.REACT_APP_API_KEY);
 
 
@@ -27,15 +28,9 @@ const Forcast = () => {
  
   const [city, setCity] = useState("London");
 
- 
+  const handleCityChange = (e) => setCity(e.target.value);
+  const handleUnitChange = (e) => setWeatherUnit(e.target.value)
 
-  function handleCityChange(e) {
-    setCity(e.target.value);
-  }
-
-  function handleUnitChange(e) {
-    setWeatherUnit(e.target.value);
-  }
 
   function getForcast(e) {
     e.preventDefault();
