@@ -16,7 +16,7 @@ const weatherDegrees = [
 ];
 
 const useStyles = makeStyles(theme => ({
-  root: {
+ forcastPaper: {
     flexGrow: 1,
     padding: theme.spacing(5),
     margin: theme.spacing(6)
@@ -78,7 +78,7 @@ const Forcast = () => {
   return (
 
     
-    <Paper className={classes.root}>
+    <Paper className={classes.forcastPaper}>
        
       <Grid>
 

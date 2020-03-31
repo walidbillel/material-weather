@@ -3,7 +3,7 @@ import { Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  rootLocation: {
     flexGrow: 1,
     margin: theme.spacing(6)
   },
@@ -36,7 +36,7 @@ const CurrentWeather = () => {
   }, []);
 
   return (
-    <div className={classes.root}>
+    <div className={classes.rootLocation}>
       <Paper className={classes.currentWeather} elevation={5}>
         <Typography variant="h5">
           Current Location: {currentLocation.city}
