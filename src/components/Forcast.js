@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Paper, Grid, TextField, MenuItem, Button, Typography } from "@material-ui/core";
 import useStyles from './styles';
-
-console.log(process.env.REACT_APP_API_KEY);
+import WeatherData from './WeatherData'
 
 
 
@@ -42,7 +41,7 @@ const Forcast = () => {
         method: "GET",
         headers: {
           "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-          "x-rapidapi-key": process.env.REACT_APP_API_KEY
+          "x-rapidapi-key": 'b9e9a72398msh461b04e8264f9a3p1a8b6cjsn602a53e21e6e'
         }
       }
     )
@@ -103,7 +102,9 @@ const Forcast = () => {
           Check Weather
         </Button>
       </Grid>
+      <WeatherData/>
     </Paper>
+    
   );
 };
 

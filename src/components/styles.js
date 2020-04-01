@@ -25,6 +25,9 @@ const useStyles = makeStyles(theme => ({
       submitBtn: {
         alignItems: "center",
         width: "100%"
+      },
+      weatherResponse : {
+        textAlign: 'center'
       }
 
 }));
