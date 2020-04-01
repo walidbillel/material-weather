@@ -1,13 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import { Paper, Typography } from '@material-ui/core'
+import useStyles from "./styles";
 
 
 
 const WeatherData = (props) => {
 
+    const classes = useStyles();
+    const [show, setShow] = useState(false);
+    
     return (
         <div >
-            <Paper>
+          {!show ?   <Paper className={classes.weatherRes}>
             <Typography variant='h6'>
                 Temp Description: {props.main}{props.description}                   
                 </Typography>
@@ -18,7 +22,7 @@ const WeatherData = (props) => {
                 Feels Like: {props.temp}                    
                 </Typography>
                 
-            </Paper>
+            </Paper> : setShow(!show)}
         </div>
     )
 }

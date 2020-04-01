@@ -26,9 +26,11 @@ const useStyles = makeStyles(theme => ({
         alignItems: "center",
         width: "100%"
       },
-      weatherResponse : {
-        textAlign: 'center'
+      weatherRes: {
+        padding: theme.spacing(4),
+        margin: theme.spacing(2)
       }
+      
 
 }));
 
