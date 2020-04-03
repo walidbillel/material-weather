@@ -1,35 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { Paper, Grid, TextField, MenuItem, Button, Typography } from "@material-ui/core";
-import useStyles from './styles';
-import WeatherData from './WeatherData'
-
-
-
-
+import {
+  Paper,
+  Grid,
+  TextField,
+  MenuItem,
+  Button,
+  Typography,
+} from "@material-ui/core";
+import useStyles from "./styles";
 
 const weatherDegrees = [
   {
     value: "imperial",
-    label: "Farenheit"
+    label: "Farenheit",
   },
   {
     value: "metric",
-    label: "Celsuis"
-  }
+    label: "Celsuis",
+  },
 ];
-
-
 
 const Forcast = () => {
   const classes = useStyles();
   const [weatherUnit, setWeatherUnit] = useState("imperial");
   const [responseObj, setResponseObj] = useState({});
- 
   const [city, setCity] = useState("London");
-
   const handleCityChange = (e) => setCity(e.target.value);
-  const handleUnitChange = (e) => setWeatherUnit(e.target.value)
-
+  const handleUnitChange = (e) => setWeatherUnit(e.target.value);
 
   function getForcast(e) {
     e.preventDefault();
@@ -41,30 +38,26 @@ const Forcast = () => {
         method: "GET",
         headers: {
           "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-          "x-rapidapi-key": process.env.REACT_APP_API_KEY
-        }
+          "x-rapidapi-key": process.env.REACT_APP_API_KEY,
+        },
       }
     )
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         if (data.cod !== 200) {
           throw new Error();
         }
         setResponseObj(data);
         console.log(data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
 
   return (
-
-    
     <Paper className={classes.forcastPaper}>
-       
       <Grid>
-
         <TextField
           className={classes.select}
           id="outlined-select-currency"
@@ -75,7 +68,7 @@ const Forcast = () => {
           helperText="Please select Weather Unit"
           variant="outlined"
         >
-          {weatherDegrees.map(option => (
+          {weatherDegrees.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
@@ -102,9 +95,7 @@ const Forcast = () => {
           Check Weather
         </Button>
       </Grid>
-      <WeatherData/>
     </Paper>
-    
   );
 };
 

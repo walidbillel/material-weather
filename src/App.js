@@ -6,23 +6,24 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   toolBar: {
-    background: "darkblue"
+    background: "darkblue",
   },
   title: {
     flexGrow: 1,
     textAlign: "center",
     letterSpacing: theme.spacing(0.4),
-    fontWeight: "bold"
-  }
+    fontWeight: "bold",
+  },
 }));
 
 function App() {
   const classes = useStyles();
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
