@@ -9,6 +9,8 @@ import {
 } from "@material-ui/core";
 import useStyles from "./styles";
 
+console.log(process.env.REACT_APP_API_KEY);
+
 const weatherDegrees = [
   {
     value: "imperial",
@@ -74,6 +76,7 @@ const Forcast = () => {
             </MenuItem>
           ))}
         </TextField>
+
         <TextField
           className={classes.select}
           id="outlined-select-currency"
