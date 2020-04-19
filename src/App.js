@@ -1,42 +1,48 @@
-import React from "react";
-import Forcast from "./components/Forcast";
-import CurrentLocation from "./components/CurrentLocation";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
+import React, { Component } from "react";
+import Navbar from "./components/Navbar/Navbar.jsx";
+import WeatherSearchDis from "./components/WeatherSearchDis/WeatherSearchDis.jsx";
+import { fetchedLocation, getForcast } from "../api";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  toolBar: {
-    background: "darkblue",
-  },
-  title: {
-    flexGrow: 1,
-    textAlign: "center",
-    letterSpacing: theme.spacing(0.4),
-    fontWeight: "bold",
-  },
-}));
+class App extends Component {
+  state = {
+    currentLocation: {},
+    currentWeather: {},
+  };
 
-function App() {
-  const classes = useStyles();
+  // function to fetch weather
+  // if no argument pass the current location
+  // else use arguments passed in WeatherSerach
 
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar className={classes.toolBar}>
-          <Typography variant="h5" className={classes.title}>
-            Weather App
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <CurrentLocation />
-      <Forcast />
-    </div>
-  );
+
+
+  
+
+  async componentDidMount() {
+    const { country, city } = await fetchedLocation();
+  
+    this.setState({
+      currentLocation: { country, city },
+      currentWeather: await getForcast(
+        "imperial",
+        city
+      ) 
+    });
+    console.log(this.state)
+  }
+
+  render() {
+    const { currentLocation, currentWeather } = this.state;
+
+    return (
+      <div>
+        <Navbar location={currentLocation} currentWeather={currentWeather} />
+        <WeatherSearchDis
+          location={currentLocation}
+          
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
