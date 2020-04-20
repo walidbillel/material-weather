@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Toolbar, IconButton, Typography} from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import icon from "./icon.png";
 import Clock from "react-live-clock";
@@ -10,15 +10,15 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   icon: {
-    height: "60px",
+    height: "50px",
   },
   clock: {
     marginLeft: theme.spacing(3),
     color: "orange",
     fontFamily: "",
   },
-  city: {
-    marginLeft: theme.spacing(3)
+  temp: {
+    marginRight: theme.spacing(1)
   }
 }));
 
@@ -37,12 +37,14 @@ const Navbar = ({ location, currentWeather }) => {
         <IconButton edge="start" color="inherit" aria-label="icon">
           <img className={classes.icon} src={icon} alt="Icon" />
         </IconButton>
-        <Typography variant="h6">{new Date(date).toDateString()}</Typography>
+  <Typography variant="subtitle1" className={classes.temp}>{temp} °</Typography>
+        <Typography variant="h6">
+          
+          {name} / {new Date(date).toDateString()}
+        </Typography>
         <Typography variant="h6" className={classes.clock}>
-        
           <ClockUi timezone={timezone} />
         </Typography>
-        <Typography variant="h6" className={classes.city}> {name}</Typography>
        
       </Toolbar>
     </AppBar>
