@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Paper, TextField, MenuItem, Button } from "@material-ui/core";
+import { Paper, TextField, MenuItem, Button, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { getForcast } from "../../../api";
 
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const WeatherSearchDis = ({ location, handleCityUnitChange }) => {
+const WeatherSearchDis = () => {
   const weatherDegrees = [
     {
       value: "imperial",
@@ -42,11 +42,35 @@ const WeatherSearchDis = ({ location, handleCityUnitChange }) => {
   const fetchWeather = async (e) => {
     e.preventDefault();
     const data = await getForcast(unit, city);
-
     console.log(data);
+    setWeatherData(data)
   };
 
+  const SearchedCityWeather = () => {
+
+    const {name, temp, feels_like, main, des} =  weatherData;
+    
+    return (
+     <div>
+       {name ?  
+        <Paper className={classes.root} align="center">
+          <Typography variant="body1">Current Weather in {name} </Typography>
+          <Typography variant="body1">Temperature: {temp}</Typography>
+       <Typography variant="body1">Feels like: {feels_like}</Typography>
+          <Typography variant="body1">Main: {main}</Typography>
+       <Typography variant="body1">Description: {des}</Typography>
+        </Paper>
+      : null }
+     </div>
+    )
+
+  }
+    
+
+  
+
   return (
+    <div>
     <Paper className={classes.root}>
       <form onSubmit={fetchWeather}>
         <TextField
@@ -88,6 +112,8 @@ const WeatherSearchDis = ({ location, handleCityUnitChange }) => {
         </Button>
       </form>
     </Paper>
+    <SearchedCityWeather />
+    </div>
   );
 };
 

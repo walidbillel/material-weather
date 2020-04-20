@@ -37,7 +37,7 @@ class App extends Component {
       <div>
         <Navbar location={currentLocation} currentWeather={currentWeather} />
         <WeatherSearchDis
-          location={currentLocation}
+          
           
         />
       </div>
