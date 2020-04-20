@@ -9,25 +9,14 @@ class App extends Component {
     currentWeather: {},
   };
 
-  // function to fetch weather
-  // if no argument pass the current location
-  // else use arguments passed in WeatherSerach
-
-
-
-  
-
   async componentDidMount() {
     const { country, city } = await fetchedLocation();
-  
+
     this.setState({
       currentLocation: { country, city },
-      currentWeather: await getForcast(
-        "imperial",
-        city
-      ) 
+      currentWeather: await getForcast("imperial", city),
     });
-    console.log(this.state)
+    console.log(this.state);
   }
 
   render() {
@@ -36,10 +25,7 @@ class App extends Component {
     return (
       <div>
         <Navbar location={currentLocation} currentWeather={currentWeather} />
-        <WeatherSearchDis
-          
-          
-        />
+        <WeatherSearchDis />
       </div>
     );
   }

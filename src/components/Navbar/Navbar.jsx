@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = ({ location, currentWeather }) => {
   const classes = useStyles();
-  const { city } = location;
+  const { city, country } = location;
   const date = Date.now();
   console.log(currentWeather)
   return (

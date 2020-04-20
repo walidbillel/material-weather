@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Paper, TextField, MenuItem, Button, Typography } from "@material-ui/core";
+import {
+  Paper,
+  TextField,
+  MenuItem,
+  Button,
+  Typography,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { getForcast } from "../../../api";
 
@@ -43,76 +49,72 @@ const WeatherSearchDis = () => {
     e.preventDefault();
     const data = await getForcast(unit, city);
     console.log(data);
-    setWeatherData(data)
+    setWeatherData(data);
   };
 
   const SearchedCityWeather = () => {
+    const { name, temp, feels_like, main, des } = weatherData;
 
-    const {name, temp, feels_like, main, des} =  weatherData;
-    
     return (
-     <div>
-       {name ?  
-        <Paper className={classes.root} align="center">
-          <Typography variant="body1">Current Weather in {name} </Typography>
-          <Typography variant="body1">Temperature: {temp}</Typography>
-       <Typography variant="body1">Feels like: {feels_like}</Typography>
-          <Typography variant="body1">Main: {main}</Typography>
-       <Typography variant="body1">Description: {des}</Typography>
-        </Paper>
-      : null }
-     </div>
-    )
-
-  }
-    
-
-  
+      <div>
+        {name ? (
+          <Paper className={classes.root} align="center">
+            <Typography variant="h4">Current Weather in {name} </Typography>
+            <Typography variant="h6">Main: {main}</Typography>
+            <Typography variant="h6">Description: {des}</Typography>
+            <Typography variant="h6">Temperature: {temp}°</Typography>
+            <Typography variant="h6">Feels like: {feels_like}°</Typography>
+            
+          </Paper>
+        ) : null}
+      </div>
+    );
+  };
 
   return (
     <div>
-    <Paper className={classes.root}>
-      <form onSubmit={fetchWeather}>
-        <TextField
-          className={classes.select}
-          id="outlined-select-currency"
-          select
-          label="Unit"
-          value={unit}
-          onChange={handleUnitChange}
-          helperText="Please select a weather unit"
-          variant="outlined"
-        >
-          {weatherDegrees.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-        <TextField
-          className={classes.select}
-          id="outlined-select-currency"
-          label="City"
-          value={city}
-          onChange={handleCityChange}
-          helperText="Please select a City"
-          variant="outlined"
-          required
-        ></TextField>
+      <Paper className={classes.root}>
+        <form onSubmit={fetchWeather}>
+          <TextField
+            className={classes.select}
+            id="outlined-select-currency"
+            select
+            label="Unit"
+            value={unit}
+            onChange={handleUnitChange}
+            helperText="Please select a weather unit"
+            variant="outlined"
+          >
+            {weatherDegrees.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
+            className={classes.select}
+            id="outlined-select-currency"
+            label="City"
+            value={city}
+            onChange={handleCityChange}
+            helperText="Please select a City"
+            variant="outlined"
+            required
+          ></TextField>
 
-        <Button
-          //   onClick={getForcast}
-          type="submit"
-          className={classes.submitBtn}
-          variant="contained"
-          color="primary"
-          size="large"
-        >
-          Check Weather
-        </Button>
-      </form>
-    </Paper>
-    <SearchedCityWeather />
+          <Button
+            //   onClick={getForcast}
+            type="submit"
+            className={classes.submitBtn}
+            variant="contained"
+            color="primary"
+            size="large"
+          >
+            Check Weather
+          </Button>
+        </form>
+      </Paper>
+      <SearchedCityWeather />
     </div>
   );
 };
