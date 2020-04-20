@@ -29,6 +29,7 @@
   "dependencies": {
     "@material-ui/core": "^4.9.10",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-live-clock": "^4.0.5"
   }
 }

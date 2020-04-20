@@ -2,6 +2,7 @@ import React from "react";
 import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import icon from "./icon.png";
+import Clock from 'react-live-clock';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -9,15 +10,25 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   icon: {
-    height: "50px",
+    height: "60px",
   },
+  clock: {
+    marginLeft: theme.spacing(2),
+    
+  }
 }));
+
+const ClockUi = ({timezone}) => {
+  return (
+    <Clock format={'HH:mm:ss'} ticking={true} timezone={timezone} />
+  )
+}
 
 const Navbar = ({ location, currentWeather }) => {
   const classes = useStyles();
-  const { city, country } = location;
+  const { city, country, timezone } = location;
+  const {name, temp, feels_like, main, des} = currentWeather
   const date = Date.now();
-  console.log(currentWeather)
   return (
     <AppBar position="static" className={classes.root}>
       <Toolbar>
@@ -25,7 +36,7 @@ const Navbar = ({ location, currentWeather }) => {
           <img className={classes.icon} src={icon} alt="Icon" />
         </IconButton>
         <Typography variant="h6">{new Date(date).toDateString()}</Typography>
-        <Typography variant="body2">{currentWeather.temp}</Typography>
+        <Typography variant="h6" className={classes.clock}> <ClockUi timezone={timezone}/></Typography>
       </Toolbar>
     </AppBar>
   );

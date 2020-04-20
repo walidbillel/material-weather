@@ -7,7 +7,7 @@ export const getForcast = async (unit, city) => {
       method: "GET",
       headers: {
         "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-        "x-rapidapi-key": process.env.API,
+        "x-rapidapi-key": process.env.REACT_APP_API,
       },
     }
   );
@@ -25,7 +25,7 @@ export const getForcast = async (unit, city) => {
 export const fetchedLocation = async () => {
   const res = await fetch("http://ip-api.com/json");
 
-  const { country, city } = await res.json();
+  const { country, city, timezone } = await res.json();
 
-  return { country, city };
+  return { country, city, timezone };
 };

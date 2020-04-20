@@ -10,10 +10,10 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    const { country, city } = await fetchedLocation();
+    const { country, city, timezone } = await fetchedLocation();
 
     this.setState({
-      currentLocation: { country, city },
+      currentLocation: { country, city, timezone },
       currentWeather: await getForcast("imperial", city),
     });
     console.log(this.state);
