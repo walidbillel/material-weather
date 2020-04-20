@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     width: "100%",
   },
+  resHead: {
+  
+  }
 }));
 
 const WeatherSearchDis = () => {
@@ -59,7 +62,7 @@ const WeatherSearchDis = () => {
       <div>
         {name ? (
           <Paper className={classes.root} align="center">
-            <Typography variant="h4">Current Weather in {name} </Typography>
+            <Typography variant="h4" className={classes.resHead}>Current Weather in {name} </Typography>
             <Typography variant="h6">Main: {main}</Typography>
             <Typography variant="h6">Description: {des}</Typography>
             <Typography variant="h6">Temperature: {temp}°</Typography>
