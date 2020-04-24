@@ -9,13 +9,15 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { getForcast } from '../../../api';
+import { yellow, grey, deepOrange } from '@material-ui/core/colors';
 
+const shades = [500, 600, 700, 800, 900];
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: 'skyblue',
+
     padding: theme.spacing(3),
-    margin: theme.spacing(2),
+    margin: theme.spacing(5),
   },
   select: {
     width: '100%',
@@ -24,8 +26,17 @@ const useStyles = makeStyles((theme) => ({
   submitBtn: {
     alignItems: 'center',
     width: '100%',
+    backgroundColor: deepOrange[shades[1]],
   },
-  resHead: {},
+  resHead: {
+    padding: '10px',
+  },
+  outputs: {
+    padding: '15px',
+  },
+  dataFe: {
+    fontFamily: 'cursive',
+  },
 }));
 
 const WeatherSearchDis = () => {
@@ -62,22 +73,32 @@ const WeatherSearchDis = () => {
         {name ? (
           <Paper className={classes.root} align="center">
             <Grid container>
-              <Grid item md={12}>
+              <Grid item xs={12}>
                 <Typography variant="h5" className={classes.resHead}>
-                  Current Weather in {name}{' '}
+                  Current Weather in{' '}
+                  <span className={classes.dataFe}> {name}</span>{' '}
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Typography variant="h6">Main: {main}</Typography>
+                <Typography variant="h6" className={classes.outputs}>
+                  Main: <span className={classes.dataFe}> {main}</span>
+                </Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Typography variant="h6">Description: {des}</Typography>
+                <Typography variant="h6" className={classes.outputs}>
+                  Description:<span className={classes.dataFe}> {des}</span>
+                </Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Typography variant="h6">Temperature: {temp}°</Typography>
+                <Typography variant="h6" className={classes.outputs}>
+                  Temperature: <span className={classes.dataFe}> {temp}°</span>
+                </Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Typography variant="h6">Feels like: {feels_like}°</Typography>
+                <Typography variant="h6" className={classes.outputs}>
+                  Feels like:
+                  <span className={classes.dataFe}> {feels_like}°</span>
+                </Typography>
               </Grid>
             </Grid>{' '}
           </Paper>

@@ -6,7 +6,7 @@ import Clock from 'react-live-clock';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: 'darkblue',
+    backgroundColor: 'black',
     flexGrow: 1,
   },
   icon: {

@@ -1,7 +1,8 @@
-import React, { Component } from "react";
-import Navbar from "./components/Navbar/Navbar.jsx";
-import WeatherSearchDis from "./components/WeatherSearchDis/WeatherSearchDis.jsx";
-import { fetchedLocation, getForcast } from "../api";
+import React, { Component } from 'react';
+import Navbar from './components/Navbar/Navbar.jsx';
+import WeatherSearchDis from './components/WeatherSearchDis/WeatherSearchDis.jsx';
+import { fetchedLocation, getForcast } from '../api';
+import './App.css';
 
 class App extends Component {
   state = {
@@ -14,7 +15,7 @@ class App extends Component {
 
     this.setState({
       currentLocation: { country, city, timezone },
-      currentWeather: await getForcast("imperial", city),
+      currentWeather: await getForcast('imperial', city),
     });
     console.log(this.state);
   }
