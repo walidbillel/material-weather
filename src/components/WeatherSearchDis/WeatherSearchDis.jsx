@@ -1,49 +1,48 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Paper,
   TextField,
   MenuItem,
   Button,
   Typography,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import { getForcast } from "../../../api";
+  Grid,
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { getForcast } from '../../../api';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: "skyblue",
+    backgroundColor: 'skyblue',
     padding: theme.spacing(3),
     margin: theme.spacing(2),
   },
   select: {
-    width: "100%",
+    width: '100%',
     marginBottom: theme.spacing(3),
   },
   submitBtn: {
-    alignItems: "center",
-    width: "100%",
+    alignItems: 'center',
+    width: '100%',
   },
-  resHead: {
-  
-  }
+  resHead: {},
 }));
 
 const WeatherSearchDis = () => {
   const weatherDegrees = [
     {
-      value: "imperial",
-      label: "Farenheit",
+      value: 'imperial',
+      label: 'Farenheit',
     },
     {
-      value: "metric",
-      label: "Celsuis",
+      value: 'metric',
+      label: 'Celsuis',
     },
   ];
   //   console.log(handleCityUnitChange)
   const classes = useStyles();
-  const [city, setCity] = useState("");
-  const [unit, setUnit] = useState("imperial");
+  const [city, setCity] = useState('');
+  const [unit, setUnit] = useState('imperial');
   const [weatherData, setWeatherData] = useState({});
   const handleCityChange = (e) => setCity(e.target.value);
   const handleUnitChange = (e) => setUnit(e.target.value);
@@ -62,12 +61,25 @@ const WeatherSearchDis = () => {
       <div>
         {name ? (
           <Paper className={classes.root} align="center">
-            <Typography variant="h4" className={classes.resHead}>Current Weather in {name} </Typography>
-            <Typography variant="h6">Main: {main}</Typography>
-            <Typography variant="h6">Description: {des}</Typography>
-            <Typography variant="h6">Temperature: {temp}°</Typography>
-            <Typography variant="h6">Feels like: {feels_like}°</Typography>
-            
+            <Grid container>
+              <Grid item md={12}>
+                <Typography variant="h5" className={classes.resHead}>
+                  Current Weather in {name}{' '}
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography variant="h6">Main: {main}</Typography>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography variant="h6">Description: {des}</Typography>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography variant="h6">Temperature: {temp}°</Typography>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Typography variant="h6">Feels like: {feels_like}°</Typography>
+              </Grid>
+            </Grid>{' '}
           </Paper>
         ) : null}
       </div>
