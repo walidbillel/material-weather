@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { getForcast } from '../../../api';
-import { yellow, grey, deepOrange } from '@material-ui/core/colors';
+import { grey } from '@material-ui/core/colors';
 
 const shades = [500, 600, 700, 800, 900];
 const useStyles = makeStyles((theme) => ({
@@ -26,16 +26,17 @@ const useStyles = makeStyles((theme) => ({
   submitBtn: {
     alignItems: 'center',
     width: '100%',
-    backgroundColor: deepOrange[shades[1]],
+    backgroundColor: grey[shades[4]],
   },
   resHead: {
-    padding: '10px',
+    padding: theme.spacing(2),
   },
-  outputs: {
-    padding: '15px',
+  outputTitle: {
+    padding: theme.spacing(3),
   },
   dataFe: {
     fontFamily: 'cursive',
+    padding: theme.spacing(1),
   },
 }));
 
@@ -50,6 +51,7 @@ const WeatherSearchDis = () => {
       label: 'Celsuis',
     },
   ];
+  console.log(process.env.REACT_APP_API_KEY);
   //   console.log(handleCityUnitChange)
   const classes = useStyles();
   const [city, setCity] = useState('');
@@ -75,32 +77,40 @@ const WeatherSearchDis = () => {
             <Grid container>
               <Grid item xs={12}>
                 <Typography variant="h5" className={classes.resHead}>
-                  Current Weather in{' '}
-                  <span className={classes.dataFe}> {name}</span>{' '}
+                  Current Weather in
+                  <span className={classes.dataFe}>
+                    {name.charAt(0).toUpperCase() + name.slice(1)}
+                  </span>
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Typography variant="h6" className={classes.outputs}>
-                  Main: <span className={classes.dataFe}> {main}</span>
+                <Typography variant="h6" className={classes.outputTitle}>
+                  Main:
+                  <span className={classes.dataFe}>
+                    {main.charAt(0).toUpperCase() + main.slice(1)}
+                  </span>
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Typography variant="h6" className={classes.outputs}>
-                  Description:<span className={classes.dataFe}> {des}</span>
+                <Typography variant="h6" className={classes.outputTitle}>
+                  Description:
+                  <span className={classes.dataFe}>
+                    {des.charAt(0).toUpperCase() + des.slice(1)}
+                  </span>
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Typography variant="h6" className={classes.outputs}>
+                <Typography variant="h6" className={classes.outputTitle}>
                   Temperature: <span className={classes.dataFe}> {temp}°</span>
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Typography variant="h6" className={classes.outputs}>
+                <Typography variant="h6" className={classes.outputTitle}>
                   Feels like:
                   <span className={classes.dataFe}> {feels_like}°</span>
                 </Typography>
               </Grid>
-            </Grid>{' '}
+            </Grid>
           </Paper>
         ) : null}
       </div>
@@ -139,11 +149,10 @@ const WeatherSearchDis = () => {
           ></TextField>
 
           <Button
-            //   onClick={getForcast}
             type="submit"
+            color="primary"
             className={classes.submitBtn}
             variant="contained"
-            color="primary"
             size="large"
           >
             Check Weather

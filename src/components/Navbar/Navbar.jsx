@@ -1,37 +1,41 @@
 import React from 'react';
-import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Grid,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import icon from './icon.png';
 import Clock from 'react-live-clock';
+import { grey } from '@material-ui/core/colors';
 
+const shades = [500, 600, 700, 800, 900];
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: 'black',
-    flexGrow: 1,
+    backgroundColor: grey[shades[4]],
+    // flexGrow: 1,
   },
   icon: {
-    height: '40px',
+    height: theme.spacing(5),
   },
   clock: {
-    marginLeft: theme.spacing(3),
+    // marginLeft: theme.spacing(3),
 
     fontFamily: '',
   },
+  // main: {
+  //   marginRight: theme.spacing(1),
+  // },
 
-  temp: {
-    marginRight: theme.spacing(2),
-  },
+  // temp: {
+  //   marginRight: theme.spacing(2),
+  // },
   [theme.breakpoints.down('xs')]: {
-    root: {
-      backgroundColor: 'red',
-    },
-    dateCity: {
-      fontSize: '15px',
-    },
-    clock: {
-      fontSize: '20px',
-    },
-    icon: { height: '30px' },
+    dateCity: {},
+    clock: {},
+    icon: {},
   },
 }));
 
@@ -41,8 +45,8 @@ const ClockUi = ({ timezone }) => {
 
 const Navbar = ({ location, currentWeather }) => {
   const classes = useStyles();
-  const { city, country, timezone } = location;
-  const { name, temp, feels_like, main, des } = currentWeather;
+  const { timezone } = location;
+  const { name, temp, main } = currentWeather;
   const date = Date.now();
   return (
     <AppBar position="static" className={classes.root}>
@@ -50,15 +54,23 @@ const Navbar = ({ location, currentWeather }) => {
         <IconButton edge="start" color="inherit" aria-label="icon">
           <img className={classes.icon} src={icon} alt="Icon" />
         </IconButton>
-        <Typography variant="subtitle2" className={classes.temp}>
-          {temp} °
-        </Typography>
-        <Typography variant="h6" className={classes.dateCity}>
-          {name} / {new Date(date).toDateString()}
-        </Typography>
-        <Typography variant="h6" className={classes.clock}>
-          <ClockUi timezone={timezone} />
-        </Typography>
+        <Grid container justify="space-between" spacing={2}>
+          <Grid item>
+            <Typography variant="h6" className={classes.temp}>
+              {temp} °
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="h6" className={classes.dateCity}>
+              {main} in {name} / {new Date(date).toDateString()}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="h6" className={classes.clock}>
+              <ClockUi timezone={timezone} />
+            </Typography>
+          </Grid>
+        </Grid>
       </Toolbar>
     </AppBar>
   );

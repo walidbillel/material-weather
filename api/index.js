@@ -2,14 +2,18 @@ export const getForcast = async (unit, city) => {
   // const res = await fetch(
   //   `https://community-open-weather-map.p.rapidapi.com/weather?units=${unit}&q=${city}`,
   //   {
-  //     method: "GET",
+  //     method: 'GET',
   //     headers: {
-  //       "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-  //       "x-rapidapi-key": process,
+  //       'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
+  //       'x-rapidapi-key': ,
   //     },
   //   }
   // );
-  // const { weather, main: {temp, feels_like}, name } = await res.json();
+  // const {
+  //   weather,
+  //   main: { temp, feels_like },
+  //   name,
+  // } = await res.json();
   const name = city,
     temp = 60,
     feels_like = 50,
