@@ -15,27 +15,13 @@ const shades = [500, 600, 700, 800, 900];
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: grey[shades[4]],
-    // flexGrow: 1,
+    flexGrow: 1,
   },
   icon: {
     height: theme.spacing(5),
   },
   clock: {
-    // marginLeft: theme.spacing(3),
-
     fontFamily: '',
-  },
-  // main: {
-  //   marginRight: theme.spacing(1),
-  // },
-
-  // temp: {
-  //   marginRight: theme.spacing(2),
-  // },
-  [theme.breakpoints.down('xs')]: {
-    dateCity: {},
-    clock: {},
-    icon: {},
   },
 }));
 
@@ -59,15 +45,17 @@ const Navbar = ({ location, currentWeather }) => {
             <Typography variant="h6" className={classes.temp}>
               {temp} °
             </Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant="h6" className={classes.dateCity}>
-              {main} in {name} / {new Date(date).toDateString()}
+            <Typography variant="caption" className={classes.dateCity}>
+              {main} in {name}
             </Typography>
           </Grid>
+
           <Grid item>
             <Typography variant="h6" className={classes.clock}>
               <ClockUi timezone={timezone} />
+            </Typography>
+            <Typography variant="caption" className={classes.dateCity}>
+              {new Date(date).toDateString()}
             </Typography>
           </Grid>
         </Grid>
