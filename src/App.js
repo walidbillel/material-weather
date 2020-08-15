@@ -17,7 +17,6 @@ class App extends Component {
       currentLocation: { country, city, timezone },
       currentWeather: await getForcast('imperial', city),
     });
-    console.log(this.state);
   }
 
   render() {

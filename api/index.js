@@ -5,7 +5,7 @@ export const getForcast = async (unit, city) => {
       method: 'GET',
       headers: {
         'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
-        'x-rapidapi-key': process.env.REACT_APP,
+        'x-rapidapi-key': 'b9e9a72398msh461b04e8264f9a3p1a8b6cjsn602a53e21e6e',
       },
     }
   );

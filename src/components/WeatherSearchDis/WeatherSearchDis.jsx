@@ -51,8 +51,7 @@ const WeatherSearchDis = () => {
       label: 'Celsuis',
     },
   ];
-  console.log(process.env.REACT_APP_API_KEY);
-  //   console.log(handleCityUnitChange)
+
   const classes = useStyles();
   const [city, setCity] = useState('');
   const [unit, setUnit] = useState('imperial');
@@ -60,11 +59,16 @@ const WeatherSearchDis = () => {
   const handleCityChange = (e) => setCity(e.target.value);
   const handleUnitChange = (e) => setUnit(e.target.value);
 
+  const clearSearch = () => {
+    setCity('');
+  };
+
   const fetchWeather = async (e) => {
     e.preventDefault();
     const data = await getForcast(unit, city);
     console.log(data);
     setWeatherData(data);
+    clearSearch();
   };
 
   const SearchedCityWeather = () => {
